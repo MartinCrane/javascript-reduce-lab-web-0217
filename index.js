@@ -16,3 +16,33 @@ const monologueLines = [
   'No.',
   'I am the one who knocks!'
 ];
+
+var totalBatteries = batteryBatches.reduce((a,b)=> {
+  return a + b;
+})
+
+const sentenceReducer = (string) => {
+  let stringArr = string.split(" ")
+  return stringArr.length;
+}
+
+var wordCountArray = monologueLines.map((a) => sentenceReducer(a));
+
+var wordCountMap = wordCountArray.reduce((a, b) => {
+  if (a.hasOwnProperty(b)) {
+    a[b]++
+    return a
+  } else {
+    a[b] = 1
+    return a
+  }
+}, {})
+
+// wordCountArray.forEach((item) => {
+//   debugger
+//   if (wordCountMap.hasOwnProperty(item)) {
+//     return wordCountMap[item] ++
+//   } else {
+//     return wordCountMap[item] = 1
+//   }
+// })
